@@ -66,10 +66,10 @@ fun Date.humanizeDiff(date: Date = Date()): String {
 	}
 
 	when (abs(timeDiff)) {
-		in 0..1  -> time = "только что"
-		in 1..45 -> time = prefix + "несколько секунд" + postfix
-		in 45..75  -> time = prefix + "минуту" + postfix
-		in 75..45 * MINUTE -> time = prefix + plur(abs(timeDiff / MINUTE), unit = TimeUnits.MINUTE) + postfix
+		in 0 * SECOND..1 * SECOND  -> time = "только что"
+		in 1 * SECOND..45 * SECOND-> time = prefix + "несколько секунд" + postfix
+		in 45 * SECOND..75 * SECOND  -> time = prefix + "минуту" + postfix
+		in 75 * SECOND..45 * MINUTE -> time = prefix + plur(abs(timeDiff / MINUTE), unit = TimeUnits.MINUTE) + postfix
 		in 45 * MINUTE..75 * MINUTE -> time = prefix + "час" + postfix
 		in 75 * MINUTE..22 * HOUR -> time = prefix + plur(abs(timeDiff / HOUR), unit = TimeUnits.HOUR) + postfix
 		in 22 * HOUR..26 * HOUR -> time = prefix + "день" + postfix

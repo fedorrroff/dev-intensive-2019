@@ -97,6 +97,9 @@ class ExampleUnitTest {
 		assertEquals("через 7 дней" ,Date().add(7, TimeUnits.DAY).humanizeDiff()) //через 7 дней
 		assertEquals("более года назад" ,Date().add(-400, TimeUnits.DAY).humanizeDiff()) //более года назад
 		assertEquals("более чем через год" ,Date().add(400, TimeUnits.DAY).humanizeDiff()) //более чем через год
+		assertEquals("несколько секунд назад" ,Date().add(-2, TimeUnits.SECOND).humanizeDiff()) //2 часа назад
+		assertEquals("только что" ,Date().add(1, TimeUnits.SECOND).humanizeDiff()) //2 часа назад
+
 	}
 
 	@Test
