@@ -126,4 +126,14 @@ class ExampleUnitTest {
 			${user1.respect}
 		""".trimIndent())
 	}
+
+	@Test
+	fun test_truncate(){
+		val str = "Bender Bending Rodriguez — дословно «Сгибальщик Сгибающий Родригес»" //Bender Bending R..."
+		assertEquals("Bender Bending R...", str.truncate())
+		val str2 = "Bender Bending Rodriguez — дословно «Сгибальщик Сгибающий Родригес»"
+		assertEquals("Bender Bending...", str2.truncate(15))
+		val str1 = "A     "
+		assertEquals("A", str1.truncate(3))
+	}
 }
