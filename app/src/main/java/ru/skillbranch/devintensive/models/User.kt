@@ -7,7 +7,7 @@ data class User (val id: String,
             var firstName: String?,
             var lastName: String?,
             var avatar: String?,
-            var raiting: Int = 0,
+            var rating: Int = 0,
             var respect: Int = 0,
             var lastVisit: Date? = Date(),
             var isOnline: Boolean = false){
@@ -38,7 +38,7 @@ data class User (val id: String,
         private var firstName: String? = ""
         private var lastName: String? = ""
         private var avatar: String? = ""
-        private var raiting: Int = 0
+        private var rating: Int = 0
         private var respect: Int = 0
         private var lastVisit: Date? = Date()
         private var isOnline: Boolean = false
@@ -51,7 +51,7 @@ data class User (val id: String,
 
         fun avatar(avatar: String?) = apply { this.avatar = avatar }
 
-        fun raiting(raiting: Int) = apply { this.raiting = raiting }
+        fun rating(rating: Int) = apply { this.rating = rating }
 
         fun respect(respect: Int) = apply { this.respect = respect }
 
@@ -63,7 +63,7 @@ data class User (val id: String,
             firstName = firstName,
             lastName = lastName,
             avatar = avatar,
-            raiting = raiting,
+            rating = rating,
             respect = respect,
             lastVisit = lastVisit,
             isOnline = isOnline
