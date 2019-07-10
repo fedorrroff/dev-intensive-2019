@@ -5,7 +5,7 @@ import androidx.annotation.RequiresApi
 
 object Utils {
 
-    fun parceFullName(fullName: String?): Pair<String?, String?> {
+    fun parseFullName(fullName: String?): Pair<String?, String?> {
         val (firstName, lastName) = when {
             fullName.isNullOrBlank() -> Pair(null, null)
             else -> {
