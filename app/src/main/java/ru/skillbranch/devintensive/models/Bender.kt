@@ -15,7 +15,6 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 	}
 
 	fun listenAnswer (answer: String): Pair<String, Triple<Int, Int, Int>> {
-
 		if (question.answers.contains(answer)) {
 			question = question.nextQuestion()
 			return "Отлично - ты справился\n${question.question}" to status.color
@@ -27,7 +26,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 				return "Это неправильный ответ\n${question.question}" to status.color
 			}
 			status = status.nextStatus()
-			return "Это не правильный ответ!\n${question.question}" to status.color
+			return "Это не правильный ответ\n${question.question}" to status.color
 		}
 	}
 
