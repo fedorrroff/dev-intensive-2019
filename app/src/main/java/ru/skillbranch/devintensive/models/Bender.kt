@@ -24,7 +24,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 				Log.d("M_Bender", "CRITICAL")
 				status = Status.NORMAL
 				question = Question.NAME
-				return "Заебал, давай по новой\n${question.question}?" to status.color
+				return "Это неправильный ответ\n${question.question}" to status.color
 			}
 			status = status.nextStatus()
 			return "Это не правильный ответ!\n${question.question}" to status.color
