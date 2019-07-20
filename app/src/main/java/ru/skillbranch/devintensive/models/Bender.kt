@@ -26,7 +26,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 				return "Это неправильный ответ\n${question.question}" to status.color
 			}
 			status = status.nextStatus()
-			return "Это не правильный ответ\n${question.question}" to status.color
+			return "Это неправильный ответ\n${question.question}" to status.color
 		}
 	}
 

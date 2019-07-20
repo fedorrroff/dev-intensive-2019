@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import ru.skillbranch.devintensive.extensions.hideKeyboard
 import ru.skillbranch.devintensive.models.Bender
 
+
+
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var benderImage: ImageView
