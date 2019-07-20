@@ -4,6 +4,7 @@ import org.junit.Test
 
 import org.junit.Assert.*
 import ru.skillbranch.devintensive.extensions.*
+import ru.skillbranch.devintensive.models.Bender
 import ru.skillbranch.devintensive.models.User
 import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
@@ -135,5 +136,11 @@ class ExampleUnitTest {
 		assertEquals("Bender Bending...", str2.truncate(15))
 		val str1 = "A     "
 		assertEquals("A", str1.truncate(3))
+	}
+
+	@Test
+	fun test_equal() {
+		val status = Bender.Status.NORMAL
+		print(status == Bender.Status.NORMAL)
 	}
 }
