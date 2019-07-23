@@ -140,7 +140,9 @@ class ExampleUnitTest {
 
 	@Test
 	fun test_equal() {
-		val status = Bender.Status.NORMAL
-		print(status == Bender.Status.NORMAL)
+		val answer = "Bender"
+		val bender = Bender()
+//		print(bender.validation(answer))
+		print(bender.listenAnswer(answer))
 	}
 }

@@ -14,13 +14,39 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 		Question.IDLE -> Question.IDLE.question
 	}
 
+	fun validation(answer: String): String {
+		when (question) {
+			Question.NAME -> if (answer[0].isLowerCase()) {
+				return "Имя должно начинаться с заглавной буквы"
+			}
+			Question.PROFESSION -> if (answer[0].isUpperCase()) {
+				return "Профессия должна начинаться со строчной буквы"
+			}
+			Question.MATERIAL -> if (answer.contains("[0-9]+".toRegex())) {
+				return "Материал не должен содержать цифр"
+			}
+			Question.BDAY -> if (answer.contains("[a-zA-Zа-яА-Я]+".toRegex())) {
+				return  "Год моего рождения должен содержать только цифры"
+			}
+			Question.SERIAL -> if (!answer.matches("[0-9]{7}".toRegex())) {
+				return  "Серийный номер содержит только цифры, и их 7"
+			}
+			else -> return "0"
+		}
+		return "0"
+	}
+
 	fun listenAnswer (answer: String): Pair<String, Triple<Int, Int, Int>> {
-		if (question.answers.contains(answer)) {
+
+		if (validation(answer) != "0") {
+			return validation(answer) + "\n${question.question}" to status.color
+		}
+
+		if (question.answers.contains(answer.toLowerCase())) {
 			question = question.nextQuestion()
 			return "Отлично - ты справился\n${question.question}" to status.color
 		}else {
 			if (status == Status.CRITICAL) {
-				Log.d("M_Bender", "CRITICAL")
 				status = Status.NORMAL
 				question = Question.NAME
 				return "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
