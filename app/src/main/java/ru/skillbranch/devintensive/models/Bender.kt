@@ -1,7 +1,5 @@
 package ru.skillbranch.devintensive.models
 
-import android.util.Log
-
 class Bender(var status: Status = Status.NORMAL, var question: Question = Question.NAME) {
 
 
@@ -32,15 +30,15 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 			Question.SERIAL -> if (answer.isEmpty() || !answer.matches("[0-9]{7}".toRegex())) {
 				return  "Серийный номер содержит только цифры, и их 7"
 			}
-			else -> return "0"
+			else -> return ""
 		}
-		return "0"
+		return ""
 	}
 
 	fun listenAnswer (answer: String): Pair<String, Triple<Int, Int, Int>> {
-
-		if (validation(answer) != "0") {
-			return validation(answer) + "\n${question.question}" to status.color
+		val validationRes = validation(answer)
+		if (validationRes.isNotEmpty()) {
+			return validationRes + "\n${question.question}" to status.color
 		}
 
 		if (question.answers.contains(answer.toLowerCase())) {
