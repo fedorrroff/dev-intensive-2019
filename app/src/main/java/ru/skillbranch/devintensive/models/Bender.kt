@@ -15,20 +15,21 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 	}
 
 	fun validation(answer: String): String {
+
 		when (question) {
-			Question.NAME -> if (answer[0].isLowerCase()) {
+			Question.NAME -> if (answer.isEmpty() || answer[0].isLowerCase()) {
 				return "Имя должно начинаться с заглавной буквы"
 			}
-			Question.PROFESSION -> if (answer[0].isUpperCase()) {
+			Question.PROFESSION -> if (answer.isEmpty() || answer[0].isUpperCase()) {
 				return "Профессия должна начинаться со строчной буквы"
 			}
-			Question.MATERIAL -> if (answer.contains("[0-9]+".toRegex())) {
+			Question.MATERIAL -> if (answer.isEmpty() || answer.contains("[0-9]+".toRegex())) {
 				return "Материал не должен содержать цифр"
 			}
-			Question.BDAY -> if (answer.contains("[a-zA-Zа-яА-Я]+".toRegex())) {
+			Question.BDAY -> if (answer.isEmpty() || answer.contains("[a-zA-Zа-яА-Я]+".toRegex())) {
 				return  "Год моего рождения должен содержать только цифры"
 			}
-			Question.SERIAL -> if (!answer.matches("[0-9]{7}".toRegex())) {
+			Question.SERIAL -> if (answer.isEmpty() || !answer.matches("[0-9]{7}".toRegex())) {
 				return  "Серийный номер содержит только цифры, и их 7"
 			}
 			else -> return "0"
