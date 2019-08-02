@@ -12,7 +12,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 		Question.IDLE -> Question.IDLE.question
 	}
 
-	fun validation(answer: String): String {
+	private fun validation(answer: String): String {
 
 		when (question) {
 			Question.NAME -> if (answer.isEmpty() || answer[0].isLowerCase()) {
