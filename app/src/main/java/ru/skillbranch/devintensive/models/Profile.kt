@@ -1,5 +1,11 @@
 package ru.skillbranch.devintensive.models
 
+import android.annotation.TargetApi
+import android.os.Build
+import androidx.annotation.RequiresApi
+import ru.skillbranch.devintensive.utils.Utils
+
+@TargetApi(Build.VERSION_CODES.N)
 data class Profile(
 
 	val firstName: String,
@@ -11,7 +17,7 @@ data class Profile(
 ) {
 
 	private val rank: String = "Junior Android Developer"
-	private val nickName: String = "John Doe"
+	private var nickName: String = createNickName()
 
 	fun toMap(): Map<String, Any> = mapOf(
 		"nickName" to nickName,
@@ -23,4 +29,8 @@ data class Profile(
 		"about" to about,
 		"repository" to repository
 	)
+
+	@RequiresApi(Build.VERSION_CODES.N)
+	fun createNickName(): String = Utils.transliteration("$firstName $lastName", "_")
+
 }

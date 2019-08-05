@@ -30,7 +30,7 @@ object Utils {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun transliteration(payload: String, divider: String = " "): String? {
+    fun transliteration(payload: String, divider: String = " "): String {
 
         val leters: Map<String, String> = mapOf("а" to "a",
             "б" to "b",
